@@ -6,7 +6,7 @@
 
 ---
 
-## Pré-requisitos
+## Pré-requisitos.
 
 Antes de iniciar os testes, verifique se os seguintes requisitos foram atendidos.
 

@@ -1,12 +1,3 @@
--- ===============================================
--- Migration: add_triggers_and_indexes
--- Descrição: Criação de índices e triggers para otimização e automação
--- Data: 15/10/2025
--- ===============================================
-
--- ===============================================
--- FUNÇÃO: Atualizar campo updated_at automaticamente
--- ===============================================
 create or replace function update_updated_at_column()
 returns trigger as $$
 begin
@@ -14,11 +5,6 @@ begin
   return new;
 end;
 $$ language plpgsql;
-
--- ===============================================
--- ÍNDICES para otimização de performance
--- ===============================================
-
 -- Profiles
 create index idx_profiles_email on profiles(email);
 create index idx_profiles_role on profiles(role);
@@ -47,10 +33,7 @@ create index idx_payments_order_id on payments(order_id);
 create index idx_payments_status on payments(status);
 create index idx_payments_transaction_code on payments(transaction_code);
 
--- ===============================================
 -- TRIGGERS para atualização automática de timestamps
--- ===============================================
-
 create trigger update_profiles_updated_at
   before update on profiles
   for each row

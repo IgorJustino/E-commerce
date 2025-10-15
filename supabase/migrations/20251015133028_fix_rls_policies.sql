@@ -1,9 +1,3 @@
--- ===============================================
--- Migration: fix_rls_policies
--- Descrição: Corrigir recursão infinita nas policies RLS
--- Data: 15/10/2025
--- ===============================================
-
 -- Remover todas as policies antigas que causam recursão
 DROP POLICY IF EXISTS "Users can view their own profile" ON profiles;
 DROP POLICY IF EXISTS "Admins can view all profiles" ON profiles;
@@ -15,10 +9,6 @@ DROP POLICY IF EXISTS "Users can view their own order items" ON order_items;
 DROP POLICY IF EXISTS "Admins can manage all order items" ON order_items;
 DROP POLICY IF EXISTS "Users can view their own payments" ON payments;
 DROP POLICY IF EXISTS "Admins can manage all payments" ON payments;
-
--- ===============================================
--- POLÍTICAS SIMPLIFICADAS (sem recursão)
--- ===============================================
 
 -- PROFILES: Usuários veem apenas seu próprio perfil
 CREATE POLICY "Users can view own profile"
@@ -81,9 +71,7 @@ CREATE POLICY "Anyone can view active products"
   ON products FOR SELECT
   USING (active = true);
 
--- ===============================================
--- COMENTÁRIOS
--- ===============================================
+-- obs
 COMMENT ON POLICY "Users can view own profile" ON profiles IS 
   'Permite que usuários vejam apenas seu próprio perfil';
 

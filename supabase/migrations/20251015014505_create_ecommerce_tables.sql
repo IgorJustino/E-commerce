@@ -1,14 +1,5 @@
--- ===============================================
--- Migration: create_ecommerce_tables
--- Descrição: Criação das tabelas principais do e-commerce
--- Data: 15/10/2025
--- ===============================================
 
--- ===============================================
--- TABELAS
--- ===============================================
-
--- Tabela de usuários (clientes e admins)
+-- Tabela de usuarios
 create table profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   full_name text not null,
@@ -100,10 +91,7 @@ create table payments (
   constraint payments_transaction_code_unique unique (transaction_code)
 );
 
--- ===============================================
--- COMENTÁRIOS nas tabelas (documentação)
--- ===============================================
-
+-- obs tabelas (documentação)
 comment on table profiles is 'Perfis de usuários do sistema (clientes e administradores)';
 comment on table products is 'Catálogo de produtos disponíveis para venda';
 comment on table addresses is 'Endereços de entrega e cobrança dos clientes';

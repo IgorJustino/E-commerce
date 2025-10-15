@@ -1,10 +1,4 @@
--- ===============================================
--- Migration: add_views
--- Descrição: Criação de views para relatórios e consultas otimizadas
--- Data: 15/10/2025
--- ===============================================
-
--- View: Resumo dos pedidos com dados do cliente
+-- View para Resumo dos pedidos com dados do cliente
 create or replace view order_summary_view as
 select
   o.id as order_id,
@@ -16,7 +10,7 @@ select
 from orders o
 join profiles p on o.profile_id = p.id;
 
--- View: Detalhes do pedido com produtos e quantidades
+-- View para Detalhes do pedido com produtos e quantidades
 create or replace view order_details_view as
 select
   o.id as order_id,
@@ -33,7 +27,7 @@ join profiles p on o.profile_id = p.id
 join order_items oi on oi.order_id = o.id
 join products pr on pr.id = oi.product_id;
 
--- View: Produtos mais vendidos (relatório de vendas)
+-- View  ara Produtos mais vendidos (relatório de vendas)
 create or replace view top_selling_products_view as
 select
   pr.id as product_id,

@@ -1,13 +1,3 @@
--- ===============================================
--- Migration: add_order_functions
--- Descrição: Criação de funções para automatizar processos de pedidos
--- Data: 15/10/2025
--- ===============================================
-
--- ===============================================
--- FUNÇÃO: Recalcular total do pedido automaticamente
--- ===============================================
-
 create or replace function recompute_order_total()
 returns trigger as $$
 begin
@@ -29,9 +19,7 @@ after insert or update or delete on order_items
 for each row
 execute function recompute_order_total();
 
--- ===============================================
 -- FUNÇÃO: Atualizar status de pedido manualmente
--- ===============================================
 
 create or replace function set_order_status(p_order_id uuid, p_status text)
 returns void as $$

@@ -1,22 +1,8 @@
--- ===============================================
--- Migration: enable_rls_and_policies
--- Descrição: Configuração de RLS e políticas de acesso
--- Data: 15/10/2025
--- ===============================================
-
--- ===============================================
--- HABILITAÇÃO DO RLS (Row-Level Security)
--- ===============================================
-
 alter table profiles enable row level security;
 alter table addresses enable row level security;
 alter table orders enable row level security;
 alter table order_items enable row level security;
 alter table payments enable row level security;
-
--- ===============================================
--- POLÍTICAS PARA CLIENTES (usuários comuns)
--- ===============================================
 
 -- Perfis: cada usuário vê apenas o próprio perfil
 create policy "Users can view their own profile"
@@ -60,11 +46,6 @@ using (
     and o.profile_id = auth.uid()
   )
 );
-
--- ===============================================
--- POLÍTICAS PARA ADMINISTRADORES (acesso total)
--- ===============================================
-
 -- Perfis: admins podem ver todos
 create policy "Admins can view all profiles"
 on profiles
