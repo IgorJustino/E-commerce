@@ -124,7 +124,6 @@ Nove produtos cadastrados corretamente.
 
 Cinco endereços, distribuídos entre os três usuários.
 
-*(continua com o mesmo formato das demais etapas — texto já revisado no chat)*
 
 ---
 
